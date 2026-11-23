@@ -1,0 +1,54 @@
+{
+  "dataset": "alt-text-eval-0",
+  "system_prompt_version": "v1",
+  "agent_model": {
+    "arn": "arn:aws:bedrock:us-east-1:723913710231:application-inference-profile/3m046lh0qqpt",
+    "resolved_foundation_model": "anthropic.claude-haiku-4-5-20251001-v1:0",
+    "temperature": 0
+  },
+  "judge_model": {
+    "arn": "arn:aws:bedrock:us-east-1:723913710231:application-inference-profile/kcykgfiy1t5i",
+    "resolved_foundation_model": "anthropic.claude-sonnet-4-6",
+    "temperature": 0
+  },
+  "task_runs": 10,
+  "evaluator_runs": 20,
+  "correctness": {
+    "evaluator": "match_expected_response",
+    "correct": 10,
+    "incorrect": 0,
+    "total": 10
+  },
+  "relevance": {
+    "evaluator": "check_answer_scope",
+    "within_scope": 10,
+    "out_of_scope": 0,
+    "total": 10
+  },
+  "phoenix_experiment_name": "alt-text-eval-0-v1",
+  "phoenix_experiment_project": "Experiment-66ce9ffe08afd884013078e0",
+  "phoenix_experiment_created_at": "2026-11-23T20:35:23Z",
+  "evaluated_at_commit": "b9ba4eb62af1370a0af945c6781ca3be7c46385d",
+  "operational_metrics": {
+    "source": "queried directly from local ~/.phoenix/phoenix.db (spans/traces tables) for project Experiment-66ce9ffe08afd884013078e0, since this run's own spans don't land in the named 'alt-text-mcp-eval' project — see memory note phoenix-experiment-trace-project-hidden",
+    "trace_count": 10,
+    "span_counts_by_kind": { "CHAIN": 65, "LLM": 20, "TOOL": 25 },
+    "span_error_count": 0,
+    "end_to_end_latency_seconds_per_question": {
+      "avg": 7.6,
+      "min": 6.5,
+      "max": 13.1
+    },
+    "individual_bedrock_call_latency_seconds": {
+      "n": 20,
+      "median": 0.9
+    },
+    "total_tokens": {
+      "prompt": 136266,
+      "completion": 2484,
+      "total": 138750
+    },
+    "note": "These numbers are from THIS experiment (2026-11-23, Experiment-66ce9ffe08afd884013078e0) and differ from the per-LLM-call median latency previously quoted in MCP_SERVER_EVALUATION_SETUP.txt Slide 7 (8.0s, from the 2026-11-20 run, Experiment-42200ca3850223b8a82084df) — that slide's number should be corrected to match whichever run is cited, run-to-run LLM latency on Bedrock is not assumed constant. End-to-end per-question latency and total token counts are consistent with the 2026-11-20 run within normal variance."
+  },
+  "notes": "Re-run on 2026-11-23 (locally, against a fresh local Phoenix instance) against AWS Bedrock (this hackathon environment's existing AWS credentials — no USAI_API_KEY/USAI_BASE_URL gateway was ever obtained). Reproduced the same perfect score as the 2026-11-18 and 2026-11-20 runs. agent.py's MultiServerMCPClient launches alt-text-mcp over stdio via `uv run python main.py` with UV_SYSTEM_CERTS=1 set (required on this network's TLS-inspecting proxy). Full per-question traces are in the local Phoenix UI (http://localhost:6006) for the lifetime of that server process; this file is the durable summary."
+}

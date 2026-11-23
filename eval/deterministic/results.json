@@ -1,0 +1,106 @@
+{
+  "total": 14,
+  "passed": 14,
+  "failed": 0,
+  "evaluated_at_commit": "b9ba4eb62af1370a0af945c6781ca3be7c46385d",
+  "cases": [
+    {
+      "question": "Missing-alt-text count decrease, before -> after",
+      "expected": "17",
+      "actual": "17",
+      "passed": true,
+      "detail": "before.missing=17 after.missing=0"
+    },
+    {
+      "question": "The one word that differs between before/after <title> brackets",
+      "expected": "Inaccessible",
+      "actual": "Inaccessible",
+      "passed": true,
+      "detail": "before_title='Welcome to CityLights! [Inaccessible Home Page]' after_title='Welcome to CityLights! [Accessible Home Page]'"
+    },
+    {
+      "question": "lang value present on exactly one page, absent on the other",
+      "expected": "en",
+      "actual": "en",
+      "passed": true,
+      "detail": "before_lang=None after_lang='en'"
+    },
+    {
+      "question": "Page whose <select> field is 'unlabeled'",
+      "expected": "before",
+      "actual": "before",
+      "passed": true,
+      "detail": "before_fields=[{'field': 'select', 'status': 'unlabeled', 'issues': ['no <label>, aria-label, or aria-labelledby']}] after_fields=[{'field': 'select[qkemnu]', 'status': 'labeled', 'issues': []}]"
+    },
+    {
+      "question": "Page with a detectable skip-navigation link",
+      "expected": "after",
+      "actual": "after",
+      "passed": true,
+      "detail": "before_skip=False after_skip=True"
+    },
+    {
+      "question": "Table-count difference, before minus after",
+      "expected": "10",
+      "actual": "10",
+      "passed": true,
+      "detail": "before=10 after=0"
+    },
+    {
+      "question": "Page whose heading outline includes a 'multiple-h1' issue",
+      "expected": "after",
+      "actual": "after",
+      "passed": true,
+      "detail": "before_issues=[] after_issues=['multiple-h1: page has 2 <h1> elements']"
+    },
+    {
+      "question": "Page with more total elements carrying an id attribute",
+      "expected": "after",
+      "actual": "after",
+      "passed": true,
+      "detail": "before=14 after=23"
+    },
+    {
+      "question": "Shared href of the two 'Click here' links on the before page",
+      "expected": "https://www.w3.org/WAI/demos/bad/offsite.html",
+      "actual": "https://www.w3.org/WAI/demos/bad/offsite.html",
+      "passed": true,
+      "detail": "click_here_hrefs={'https://www.w3.org/WAI/demos/bad/offsite.html'}"
+    },
+    {
+      "question": "Any nonzero count across iframe/media/aria/contrast checks on either page",
+      "expected": "False",
+      "actual": "False",
+      "passed": true,
+      "detail": "https://www.w3.org/WAI/demos/bad/before/home.html: {'iframe_missing': 0, 'media_missing_or_manual': 0, 'aria_total': 0, 'contrast_low': 0}; https://www.w3.org/WAI/demos/bad/after/home.html: {'iframe_missing': 0, 'media_missing_or_manual': 0, 'aria_total': 0, 'contrast_low': 0}"
+    },
+    {
+      "question": "fetch_image returns real PNG image content for a direct image URL",
+      "expected": "type=image, mime_type=image/png, non-empty data",
+      "actual": "type=image mime_type=image/png data_len=2376",
+      "passed": true,
+      "detail": "url=https://www.w3.org/WAI/demos/bad/img/w3c.png is_error=False"
+    },
+    {
+      "question": "fetch_image returns a graceful {error, hint} dict for a non-image URL",
+      "expected": "{'error': ..., 'hint': ...} mentioning 'image', not a crash",
+      "actual": "{'error': \"URL did not return a recognized image type (got 'text/html').\", 'hint': 'Pass the direct image URL (the <img> src), not the page URL.'}",
+      "passed": true,
+      "detail": "url=https://www.w3.org/WAI/demos/bad/before/home.html"
+    },
+    {
+      "question": "scan_site's start-page scan matches an independent scan_page_alt_text call",
+      "expected": "identical images/summary for the start URL",
+      "actual": "match",
+      "passed": true,
+      "detail": "site_summary={'missing': 17, 'emptyDecorative': 0, 'presentWithIssues': 1, 'presentClean': 2} direct_summary={'missing': 17, 'emptyDecorative': 0, 'presentWithIssues': 1, 'presentClean': 2}"
+    },
+    {
+      "question": "scan_site respects max_pages=3 and only follows same-origin links",
+      "expected": "<=3 pages, all same-origin, totalMissing >= 17",
+      "actual": "pages=3 same_origin=True totalMissing=17",
+      "passed": true,
+      "detail": "pagesSkipped=['https://www.w3.org/WAI/demos/bad/Overview.html', 'https://www.w3.org/WAI/demos/bad/before/reports/home.html', 'https://www.w3.org/WAI/demos/bad/after/home.html', 'https://www.w3.org/WAI/demos/bad/after/reports/home.html', 'https://www.w3.org/WAI/demos/bad/before/annotated/home.html', 'https://www.w3.org/WAI/demos/bad/before/news.html', 'https://www.w3.org/WAI/demos/bad/before/tickets.html', 'https://www.w3.org/WAI/demos/bad/before/survey.html', 'https://www.w3.org/WAI/demos/bad/before/template.html', 'https://www.w3.org/WAI/demos/bad/offsite.html', 'https://www.w3.org/Consortium/Legal/ipr-notice', 'https://www.w3.org/WAI/demos/bad/changelog.html', 'https://www.w3.org/People/shadi/', 'https://www.w3.org/WAI/EO/', 'https://www.w3.org/WAI/TIES/', 'https://www.w3.org/WAI/WAI-AGE/', 'https://www.w3.org/WAI/demos/bad/acks.html', 'https://www.w3.org/WAI/sitemap.html', 'https://www.w3.org/WAI/sitehelp.html', 'https://www.w3.org/WAI/search.php', 'https://www.w3.org/WAI/contacts', 'https://www.w3.org/Consortium/Legal/copyright-documents', 'https://www.w3.org/Consortium/Legal/copyright-software', 'https://www.w3.org/Consortium/Legal/privacy-statement']"
+    }
+  ]
+}

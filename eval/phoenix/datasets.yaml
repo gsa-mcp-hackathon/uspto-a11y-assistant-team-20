@@ -1,0 +1,8 @@
+datasets:
+  alt-text-eval-0:
+    csv_path: datasets/alt-text-eval-0/examples/alt-text-eval-0.csv
+    input_keys:
+      - query
+    output_keys:
+      - responses
+    description: "10 gold Q&A pairs exercising 13 of the 15 alt-text-mcp tools (one question exercises 4 checks at once) against the stable W3C WAI before/after accessibility demo pages."

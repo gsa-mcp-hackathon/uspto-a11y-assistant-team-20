@@ -1,0 +1,10 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "gov.uspto.tech-re/gsahackathon",
+  "description": "MCP server with 15 tools that scan a web page for Section 508 / WCAG accessibility issues — missing or low-quality alt text, broken heading structure, unlabeled form fields, missing landmarks/skip links, duplicate ids, bad tables, missing lang/title, iframe titles, media captions, ARIA conflicts, and low color contrast.",
+  "repository": {
+    "url": "https://prod-cicm.uspto.gov/tech-re/gsahackathon",
+    "source": "gitlab"
+  },
+  "version": "0.1.0"
+}

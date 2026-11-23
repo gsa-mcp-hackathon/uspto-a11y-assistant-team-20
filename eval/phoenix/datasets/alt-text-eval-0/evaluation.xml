@@ -1,0 +1,42 @@
+<evaluation>
+   <qa_pair>
+      <question>Scan https://www.w3.org/WAI/demos/bad/before/home.html and https://www.w3.org/WAI/demos/bad/after/home.html for image alt-text issues. By how many images did the "missing" count in the summary decrease going from the before page to the after page?</question>
+      <answer>17</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Check the &lt;title&gt; element of both https://www.w3.org/WAI/demos/bad/before/home.html and https://www.w3.org/WAI/demos/bad/after/home.html. Both titles share the common prefix "Welcome to CityLights! [" followed by a different single word in brackets on each page. What is that word on the BEFORE page?</question>
+      <answer>Inaccessible</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Check the root language attribute of both https://www.w3.org/WAI/demos/bad/before/home.html and https://www.w3.org/WAI/demos/bad/after/home.html. One of the two pages declares a lang value that is completely absent on the other page. What is that lang value?</question>
+      <answer>en</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Check the form field labeling on both https://www.w3.org/WAI/demos/bad/before/home.html and https://www.w3.org/WAI/demos/bad/after/home.html. Each page has exactly one form field (a &lt;select&gt;). On exactly one of the two pages, that field's status is "unlabeled". Which page is it — answer "before" or "after"?</question>
+      <answer>before</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Check the ARIA landmarks and skip-navigation link on both https://www.w3.org/WAI/demos/bad/before/home.html and https://www.w3.org/WAI/demos/bad/after/home.html. Which page has a detectable skip-navigation link — answer "before" or "after"?</question>
+      <answer>after</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Check the &lt;table&gt; elements on both https://www.w3.org/WAI/demos/bad/before/home.html and https://www.w3.org/WAI/demos/bad/after/home.html. How many more tables does the before page have than the after page?</question>
+      <answer>10</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Check the heading structure of both https://www.w3.org/WAI/demos/bad/before/home.html and https://www.w3.org/WAI/demos/bad/after/home.html. Which page's result includes a "multiple-h1" issue — answer "before" or "after"?</question>
+      <answer>after</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Check for duplicate element ids on both https://www.w3.org/WAI/demos/bad/before/home.html and https://www.w3.org/WAI/demos/bad/after/home.html. Which page has more total elements carrying an id attribute — answer "before" or "after"?</question>
+      <answer>after</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>Check the link text on https://www.w3.org/WAI/demos/bad/before/home.html. Two links on the page are flagged as generic, non-descriptive text ("Click here"). Both share the same destination. What is that shared href?</question>
+      <answer>https://www.w3.org/WAI/demos/bad/offsite.html</answer>
+   </qa_pair>
+   <qa_pair>
+      <question>On both https://www.w3.org/WAI/demos/bad/before/home.html and https://www.w3.org/WAI/demos/bad/after/home.html, check for: iframes missing a title, video/audio elements missing captions, conflicting/invalid ARIA usage, and low color-contrast inline styles. Across all of these checks on both pages, does any single one of them report a nonzero count of issues, findings, or elements? Answer True or False.</question>
+      <answer>False</answer>
+   </qa_pair>
+</evaluation>

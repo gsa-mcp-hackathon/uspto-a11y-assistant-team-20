@@ -1,0 +1,17 @@
+# Databricks Apps deployment configuration for the team20 alt-text chat agent.
+#
+# Resources grant this app's auto-injected service principal the permissions it
+# needs to call the LLM serving endpoint (CAN_QUERY) and the mcp-alt-text app
+# (CAN_USE).  Declaring them here means every deploy re-applies the grants
+# without needing a separate CLI step.
+command: ["python", "server.py"]
+
+resources:
+  - name: agents-serving-endpoint
+    serving_endpoint:
+      name: databricks-gpt-5-1
+      permission: CAN_QUERY
+  - name: mcp-alt-text
+    app:
+      name: mcp-alt-text
+      permission: CAN_USE

@@ -1,0 +1,37 @@
+# You can override the included template(s) by including variable overrides
+# SAST customization: https://docs.gitlab.com/user/application_security/sast/#available-cicd-variables
+# Secret Detection customization: https://docs.gitlab.com/user/application_security/secret_detection/pipeline/configure/
+# Dependency Scanning customization: https://docs.gitlab.com/user/application_security/dependency_scanning/dependency_scanning_sbom/#customizing-analyzer-behavior
+# Container Scanning customization: https://docs.gitlab.com/user/application_security/container_scanning/#customizing-analyzer-behavior
+# Note that environment variables can be set in several places
+# See https://docs.gitlab.com/ci/variables/#cicd-variable-precedence
+stages:
+- test
+- secret-detection
+variables:
+  SECRET_DETECTION_ENABLED: 'true'
+secret_detection:
+  stage: secret-detection
+include:
+- template: Security/Secret-Detection.gitlab-ci.yml
+
+# Runs on every branch and merge request. Lint + format + pytest + the
+# deterministic tool eval must pass before anything is eligible to merge to
+# master.
+test:
+  stage: test
+  image: ghcr.io/astral-sh/uv:python3.11-bookworm-slim
+  script:
+    - uv sync --system-certs --group dev
+    - uv run --system-certs ruff check .
+    - uv run --system-certs ruff format --check .
+    - uv run --system-certs pytest tests/ -v
+    # No LLM credentials needed — calls the tools directly against the live
+    # W3C WAI before/after demo pages and checks real tool output.
+    - uv run --system-certs python eval/deterministic/run_tool_eval.py
+
+# No CI deploy stage: this is a shared hackathon workspace without a
+# dedicated CI service principal available. Deploys to Databricks Apps happen
+# manually via `bash deploy/databricks/deploy-databricks-app.sh` — see
+# deploy/databricks/README.md. Revisit CI/CD deploy if the project moves to a
+# workspace where a service principal can be provisioned.

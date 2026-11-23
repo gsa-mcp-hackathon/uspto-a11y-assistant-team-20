@@ -1,0 +1,32 @@
+[project]
+name = "alt-text-mcp-eval"
+version = "0.1.0"
+description = "Phoenix/LangChain LLM-as-judge evaluation harness for alt-text-mcp"
+requires-python = ">=3.11"
+dependencies = [
+    "arize-phoenix>=18.0.0",
+    "arize-phoenix-client>=2.13.0",
+    "arize-phoenix-evals>=3.1.1",
+    "langchain>=1.3.14",
+    "langchain-aws>=0.2.0",
+    # >=0.3.2 specifically: this is the first release that caps mcp<2.0.0,
+    # matching its actual (unported) use of mcp.shared.context.RequestContext,
+    # which mcp 2.x renamed/removed. Without the cap, uv happily resolves
+    # mcp==2.3.0 and langchain_mcp_adapters fails at import time.
+    "langchain-mcp-adapters>=0.3.2",
+    "langchain-openai>=1.3.5",
+    # Enables phoenix.evals.LLM(provider="bedrock", ...) for the judges — its
+    # "bedrock" adapter only self-registers when litellm is importable.
+    "litellm>=1.55.0",
+    "openinference-instrumentation-langchain>=0.1.67",
+    "opentelemetry-exporter-otlp>=1.43.0",
+    "opentelemetry-sdk>=1.43.0",
+    "pandas>=2.0.0",
+    "python-dotenv>=1.1.0",
+    "pyyaml>=6.0.0",
+]
+
+[tool.uv]
+# This is a script collection (agent.py, create_dataset.py, run_experiment.py),
+# not an importable package — skip building/installing it as a wheel.
+package = false

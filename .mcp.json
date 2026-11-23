@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "alt-text-mcp": {
+      "command": "uv",
+      "args": ["run", "alt-text-mcp"]
+    }
+  }
+}
